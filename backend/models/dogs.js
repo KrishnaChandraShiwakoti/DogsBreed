@@ -28,6 +28,10 @@ const dogSchema = new mongoose.Schema({
   },
 });
 
+dogSchema.pre(/^find/, function (next) {
+  this.select('-__v -hypoallergenic'), next();
+});
+
 const Dog = mongoose.model('Dog', dogSchema);
 
 module.exports = Dog;

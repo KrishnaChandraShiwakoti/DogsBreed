@@ -6,12 +6,19 @@ exports.getBreed = async (req, res) => {
     const page = req.query.page * 1 || 1;
     const limit = req.query.limit * 1 || 10;
     skip = limit * (page - 1);
+    // Total number of documents
+    const totalDocs = await Dog.countDocuments();
+
+    // Calculate max pages
+    const maxPage = Math.ceil(totalDocs / limit);
+
     const response = await Dog.find().skip(skip).limit(limit);
     if (response.length == 0 && page > 1) {
       throw new Error("This page doesn't have any data. Try lower page number");
     }
     res.status(200).json({
       status: 'success',
+      maxPage,
       result: response.length,
       data: response,
     });
@@ -54,7 +61,9 @@ exports.addBreed = async (req, res) => {
 exports.updateBreed = async (req, res) => {
   try {
     const { id } = req.params;
-    const response = await Dog.findByIdAndUpdate(id, req.body);
+    const response = await Dog.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     if (!response) throw new Error('No dogBreed with the id');
     const updatedResponse = await Dog.findById(id);
     res.status(200).json({
@@ -69,6 +78,7 @@ exports.updateBreed = async (req, res) => {
   }
 };
 exports.deleteBreed = async (req, res) => {
+  console.log(req.params.id);
   try {
     await Dog.findByIdAndDelete(req.params.id);
     res.status(200).json({
