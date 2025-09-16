@@ -9,6 +9,7 @@ router
 
 router
   .route('/breed/:id')
+  .get(breedController.getSingleBreed)
   .patch(breedController.updateBreed)
   .delete(breedController.deleteBreed);
 

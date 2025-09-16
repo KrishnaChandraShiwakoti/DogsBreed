@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomeLayout from "./pages/HomeLayout";
 import Breed from "./pages/Breed";
+import Search from "./pages/Search";
 
 function App() {
   const router = createBrowserRouter([
@@ -12,6 +13,10 @@ function App() {
         {
           index: true,
           element: <Breed />,
+        },
+        {
+          path: "/search",
+          element: <Search />,
         },
       ],
     },

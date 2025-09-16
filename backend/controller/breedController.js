@@ -29,6 +29,21 @@ exports.getBreed = async (req, res) => {
     });
   }
 };
+exports.getSingleBreed = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await Dog.find({ name: id });
+    res.status(200).json({
+      status: 'success',
+      data: response,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'fail',
+      message: error.message,
+    });
+  }
+};
 exports.addBreed = async (req, res) => {
   try {
     const {
