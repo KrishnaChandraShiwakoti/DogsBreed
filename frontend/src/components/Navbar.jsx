@@ -6,7 +6,7 @@ const Navbar = () => {
     <div className="my-2 bg-blue-400 py-5 flex justify-around rounded-2xl shadow-2xl">
       <Link to="/">Home</Link>
       <Link to="/">Breed</Link>
-      <Link to="/facts">Facts</Link>
+      <Link to="/add">Add a Breed</Link>
       <Link to="/search">Search</Link>
     </div>
   );

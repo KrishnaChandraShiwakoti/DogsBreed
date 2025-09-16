@@ -24,7 +24,7 @@ const dogSchema = new mongoose.Schema({
   },
   hypoallergenic: {
     type: Boolean,
-    required: [true, 'Well, is it hypoallergenic or not?'],
+    // required: [true, 'Well, is it hypoallergenic or not?'],
   },
 });
 

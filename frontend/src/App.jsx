@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomeLayout from "./pages/HomeLayout";
 import Breed from "./pages/Breed";
 import Search from "./pages/Search";
+import Add from "./pages/Add";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +18,10 @@ function App() {
         {
           path: "/search",
           element: <Search />,
+        },
+        {
+          path: "/add",
+          element: <Add />,
         },
       ],
     },

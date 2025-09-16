@@ -4,18 +4,19 @@ import SearchBox from "../components/SearchBox";
 
 const Search = () => {
   const [breed, setBreed] = useState({});
+  const [isSearched, setIsSearched] = useState(false);
   const onSearch = async (name) => {
     const { data } = await axios.get(
       `http://127.0.0.1:3000/api/v1/dogs/breed/${name}`
     );
     setBreed(data.data[0]);
+    setIsSearched(true);
   };
-  console.log(breed);
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 bg-gray-50 rounded-xl shadow-lg">
       <SearchBox onSearch={onSearch} />
-      {breed && breed.name && (
+      {breed && breed.name ? (
         <div className="mt-8 p-6 bg-white rounded-lg shadow-md">
           <h2 className="mb-3 text-2xl font-bold text-blue-600">
             {breed.name}
@@ -40,6 +41,13 @@ const Search = () => {
             </span>
           </div>
         </div>
+      ) : (
+        isSearched && (
+          <div className="text-red-500 my-3 font-sans font-semibold">
+            {" "}
+            No Breed with that name in the database
+          </div>
+        )
       )}
     </div>
   );
