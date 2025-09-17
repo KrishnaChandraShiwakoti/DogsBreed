@@ -26,11 +26,15 @@ function App() {
       ],
     },
   ]);
+<<<<<<< HEAD
   return (
     <>
       <RouterProvider router={router} />
     </>
   );
+=======
+  return <RouterProvider router={router} />;
+>>>>>>> e65415d491b10f9e612712990ace1a947884a385
 }
 
 export default App;
