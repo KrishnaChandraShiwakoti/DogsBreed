@@ -21,7 +21,7 @@ const Breed = () => {
 
   const handleDelete = async (row) => {
     await axios.delete(`http://127.0.0.1:3000/api/v1/dogs/breed/${row._id}`);
-    alert("well deleted a breed");
+    alert("deleted successfully");
     refetch();
   };
 
