@@ -3,6 +3,8 @@ import HomeLayout from "./pages/HomeLayout";
 import Breed from "./pages/Breed";
 import Search from "./pages/Search";
 import Add from "./pages/Add";
+import SingleBreed from "./pages/SingleBreed";
+import Gropus from "./pages/Gropus";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,18 +25,22 @@ function App() {
           path: "/add",
           element: <Add />,
         },
+        {
+          path: "/:name",
+          element: <SingleBreed />,
+        },
+        {
+          path: "/groups",
+          element: <Gropus />,
+        },
       ],
     },
   ]);
-<<<<<<< HEAD
   return (
     <>
       <RouterProvider router={router} />
     </>
   );
-=======
-  return <RouterProvider router={router} />;
->>>>>>> e65415d491b10f9e612712990ace1a947884a385
 }
 
 export default App;

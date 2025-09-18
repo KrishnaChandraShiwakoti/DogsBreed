@@ -67,7 +67,7 @@ const Add = () => {
         </h1>
         <div className="flex flex-col gap-6">
           {/* name and description */}
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-col md:flex-row">
             <div className="flex flex-col flex-1">
               <label
                 htmlFor="breed-name"
@@ -104,7 +104,7 @@ const Add = () => {
             <h2 className="text-xl font-semibold mb-2 text-gray-700">
               Life Span
             </h2>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-col md:flex-row">
               <div className="flex flex-col flex-1">
                 <label htmlFor="life-min" className="mb-1 text-sm">
                   Min
@@ -138,7 +138,7 @@ const Add = () => {
             <h2 className="text-xl font-semibold mb-2 text-gray-700">
               Male Weight
             </h2>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-col md:flex-row">
               <div className="flex flex-col flex-1">
                 <label htmlFor="male-weight-min" className="mb-1 text-sm">
                   Min
@@ -168,11 +168,11 @@ const Add = () => {
             </div>
           </div>
           {/* Female Weight */}
-          <div>
+          <div className="">
             <h2 className="text-xl font-semibold mb-2 text-gray-700">
               Female Weight
             </h2>
-            <div className="flex gap-4">
+            <div className="flex gap-4 flex-col md:flex-row">
               <div className="flex flex-col flex-1">
                 <label htmlFor="female-weight-min" className="mb-1 text-sm">
                   Min

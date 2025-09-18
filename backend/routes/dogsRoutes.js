@@ -12,5 +12,5 @@ router
   .get(breedController.getSingleBreed)
   .patch(breedController.updateBreed)
   .delete(breedController.deleteBreed);
-
+router.route('/groups').get(breedController.getBreedsGroupedAlphabetically);
 module.exports = router;

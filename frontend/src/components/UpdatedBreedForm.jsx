@@ -74,7 +74,7 @@ const UpdatedBreedForm = ({ setIsModalOpen, Breed }) => {
         </h1>
         <div className="flex flex-col gap-6">
           {/* name and description */}
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-col md:flex-row">
             <div className="flex flex-col flex-1">
               <label
                 htmlFor="breed-name"

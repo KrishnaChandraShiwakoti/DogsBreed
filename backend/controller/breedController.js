@@ -46,6 +46,38 @@ exports.getSingleBreed = async (req, res) => {
     });
   }
 };
+
+// Controller to return breeds grouped by alphabetical order
+exports.getBreedsGroupedAlphabetically = async (req, res) => {
+  try {
+    const breeds = await Dog.find();
+    // Group breeds by first letter
+    const grouped = {};
+    breeds.forEach((breed) => {
+      const firstLetter = breed.name.charAt(0).toUpperCase();
+      if (!grouped[firstLetter]) grouped[firstLetter] = [];
+      grouped[firstLetter].push(breed);
+    });
+    // Format as array of { group: 'A', elements: [...] }
+    const result = Array.from({ length: 26 }, (_, i) => {
+      const letter = String.fromCharCode(65 + i);
+      return {
+        group: letter,
+        elements: grouped[letter] || [],
+      };
+    });
+
+    res.status(200).json({
+      status: 'success',
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 'fail',
+      message: error.message,
+    });
+  }
+};
 exports.addBreed = async (req, res) => {
   try {
     const {

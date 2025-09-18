@@ -1,13 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import DataTable from "react-data-table-component";
 import UpdatedBreedForm from "../components/UpdatedBreedForm";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const Breed = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBreed, setSelectedBreed] = useState(null);
+
+  const navigate = useNavigate();
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: [currentPage],
@@ -60,6 +63,11 @@ const Breed = () => {
           <DataTable
             columns={data?.columns}
             data={data?.list}
+            onRowClicked={(row) => {
+              // row.name = row.name.split(" ").join("%");
+              console.log(row);
+              navigate(`/${row.name}`);
+            }}
             customStyles={customStyles}
           />
           <div className="absolute right-0 flex">
